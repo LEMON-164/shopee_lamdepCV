@@ -22,4 +22,8 @@ public class CartService {
         User user = userRepo.findById(userId).get();
         return cartRepo.getCartByUser(user);
     }
+
+    public void removeCart(Cart cart) {
+        cartRepo.delete(cart);
+    }
 }
