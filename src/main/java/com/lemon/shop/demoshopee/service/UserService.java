@@ -17,8 +17,12 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public void saveUser(User user) {
+    public void save(User user) {
         userRepo.save(user);
+    }
+
+    public void remove(User user) {
+        userRepo.delete(user);
     }
 
 }

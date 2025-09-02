@@ -14,7 +14,7 @@ public class CartService {
     @Autowired
     private UserRepo userRepo;
 
-    public void addCart(Cart cart) {
+    public void save(Cart cart) {
         cartRepo.save(cart);
     }
 
@@ -23,7 +23,7 @@ public class CartService {
         return cartRepo.getCartByUser(user);
     }
 
-    public void removeCart(Cart cart) {
+    public void remove(Cart cart) {
         cartRepo.delete(cart);
     }
 }

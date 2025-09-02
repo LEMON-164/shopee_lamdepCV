@@ -20,5 +20,7 @@ public class OrderItemService {
         orderItemRepo.save(orderItem);
     }
 
-
+    public void remove(OrderItem orderItem) {
+        orderItemRepo.delete(orderItem);
+    }
 }

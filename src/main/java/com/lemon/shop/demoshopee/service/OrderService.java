@@ -19,7 +19,11 @@ public class OrderService {
     public Order getOrderById(int id) {
         return orderRepo.findById(id).get();
     }
-    public Order saveOrder(Order order) {
+    public Order save(Order order) {
         return orderRepo.save(order);
+    }
+
+    public void remove(Order order) {
+        orderRepo.delete(order);
     }
 }

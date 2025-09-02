@@ -17,7 +17,11 @@ public class CategoryService {
         return categoryRepo.findAll();
     }
 
-    public void saveCategory(Category category) {
+    public void save(Category category) {
         categoryRepo.save(category);
+    }
+
+    public void remove(Category category) {
+        categoryRepo.delete(category);
     }
 }

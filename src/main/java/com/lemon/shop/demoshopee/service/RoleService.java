@@ -16,15 +16,11 @@ public class RoleService {
         return roleRepo.findAll();
     }
 
-    public Role findbyname(String name){
-        return roleRepo.findByName(name);
-    }
-
     public void save(Role role) {
         roleRepo.save(role);
     }
 
-    public void delete(Role role) {
+    public void remove(Role role) {
         roleRepo.delete(role);
     }
 }
