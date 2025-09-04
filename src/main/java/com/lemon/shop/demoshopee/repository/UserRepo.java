@@ -9,7 +9,7 @@ public interface UserRepo extends JpaRepository<User, String> {
 
     public Optional<User> findById(int id);
     public List<User> findUsersByUsernameContainingIgnoreCase(String name);
-    Optional<User> findByUsername(String username);
+    public User findByUsernameContainingIgnoreCase(String username);
     Optional<User> findByEmail(String email);
     Optional<User> findByUsernameAndPassword(String username, String password);
     Optional<User> findByEmailAndPassword(String email, String password);
