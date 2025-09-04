@@ -16,8 +16,8 @@ public class Role {
     @Column(name = "Id", columnDefinition = "BIGINT")
     private int id;
 
-    @Column(name = "RoleName", nullable = false, columnDefinition = "VARCHAR(50)")
-    private String roleName;
+    @Column(name = "Name", nullable = false, columnDefinition = "VARCHAR(50)")
+    private String name;
 
     @Column(name = "Description", columnDefinition = "NVARCHAR(200)")
     private String description;

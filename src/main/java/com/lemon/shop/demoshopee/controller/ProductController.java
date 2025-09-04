@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/products")
 public class ProductController {
 
     @Autowired
     private ProductService productService;
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public Product getProduct(@PathVariable String id) {
         return productService.findById(id);
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public List<Product> getProducts() {
         return productService.findAll();
     }
