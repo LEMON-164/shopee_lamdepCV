@@ -19,7 +19,7 @@ public class CartService {
     }
 
     public Cart getCartbyUserId(int userId) {
-        User user = userRepo.findById(userId).get();
+        User user = userRepo.findById(userId);
         return cartRepo.getCartByUser(user);
     }
 

@@ -1,15 +1,11 @@
 package com.lemon.shop.demoshopee.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
 
 import java.util.*;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class User {
 
     @Id
@@ -17,10 +13,7 @@ public class User {
     @Column(name = "Id", columnDefinition = "BIGINT")
     private int id;
 
-    @Column(name = "Name", columnDefinition = "NVARCHAR(50)")
-    private String name;
-
-    @Column(name = "Username", nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(name = "Username", columnDefinition = "VARCHAR(50)")
     private String username;
 
     @Column(name = "Password", nullable = false, columnDefinition = "VARCHAR(50)")
@@ -35,8 +28,14 @@ public class User {
     @Column(name = "Address", columnDefinition = "NVARCHAR(255)")
     private String address;
 
-    @Column(name = "Create_at", nullable = false, columnDefinition = "DATETIME2")
-    private Date create_at;
+    @Column(insertable = false, updatable = false, name = "Create_at", nullable = false, columnDefinition = "DATETIME2 DEFAULT GETDATE()" )
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createAt;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createAt = new Date();
+    }
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RoleId")
@@ -58,7 +57,10 @@ public class User {
     @OneToOne(mappedBy = "user")
     private Cart cart;
 
-    public User(int id, String username, String password, String email, String phone, String address, Set<Role> roles, Date create_at) {
+    public User() {
+    }
+
+    public User(int id, String username, String password, String email, String phone, String address, Role role, Date createAt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -66,7 +68,7 @@ public class User {
         this.phone = phone;
         this.address = address;
         this.role = role;
-        this.create_at = create_at;
+        this.createAt = createAt;
     }
 
     public int getId() {
@@ -117,19 +119,19 @@ public class User {
         this.address = address;
     }
 
-    public Date getCreate_at() {
-        return create_at;
+    public Date getCreateAt() {
+        return createAt;
     }
 
-    public void setCreate_at(Date create_at) {
-        this.create_at = create_at;
+    public void setCreateAt(Date create_at) {
+        this.createAt = create_at;
     }
 
-    public Role getRoles() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRoles(Role role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

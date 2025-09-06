@@ -1,5 +1,7 @@
 package com.lemon.shop.demoshopee.controller;
 
+import com.lemon.shop.demoshopee.dto.request.RoleReq;
+import com.lemon.shop.demoshopee.dto.respond.RoleRes;
 import com.lemon.shop.demoshopee.entity.Role;
 import com.lemon.shop.demoshopee.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,23 +15,23 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping
-    public List<Role> getAllRoles() {
-        return roleService.findAll();
+    @GetMapping("/roleList")
+    public List<RoleRes> getAllRoles() {
+        return roleService.getAllRoles();
     }
 
     @PostMapping("/addRole")
-    public void addRole(@RequestBody Role role) {
-        roleService.save(role);
+    public void addRole(@RequestBody RoleReq dto) {
+        roleService.addRole(dto);
     }
 
-    @PutMapping("/updateRole")
-    public void updateRole(@RequestBody Role role) {
-        roleService.save(role);
+    @PutMapping("/updateRole/{id}")
+    public void updateRole(@PathVariable("id") int id, @RequestBody RoleReq dto) {
+        roleService.updateRole(id, dto);
     }
 
-    @DeleteMapping("/removeRole")
-    public void removeRole(@RequestBody Role role) {
-        roleService.remove(role);
+    @DeleteMapping("/{id}")
+    public void removeRole(@PathVariable("id") int id) {
+        roleService.removeRole(id);
     }
 }

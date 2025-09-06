@@ -7,7 +7,7 @@ import java.util.*;
 
 public interface UserRepo extends JpaRepository<User, String> {
 
-    public Optional<User> findById(int id);
+    public User findById(int id);
     public List<User> findUsersByUsernameContainingIgnoreCase(String name);
     public User findByUsernameContainingIgnoreCase(String username);
     Optional<User> findByEmail(String email);

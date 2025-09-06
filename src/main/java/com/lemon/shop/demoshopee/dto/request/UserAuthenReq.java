@@ -1,12 +1,12 @@
 package com.lemon.shop.demoshopee.dto.request;
 
 
-public class UserRegisterReq {
+public class UserAuthenReq {
     private String password;
     private String email;
     private String phone;
 
-    public UserRegisterReq() {
+    public UserAuthenReq() {
     }
 
     public String getPassword() {
@@ -32,4 +32,5 @@ public class UserRegisterReq {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 }
